@@ -14,17 +14,32 @@ def crear_reserva(request):
         fecha = request.POST.get("fecha")
         hora = request.POST.get("hora")
         notas = request.POST.get("notas")
+        preordenar = request.POST.get("preordenar")
 
-        # Creamos la reserva en la base de datos
-        Reserva.objects.create(
-            nombre=nombre,
-            telefono=telefono,
-            cantidad_personas=cantidad_personas,
+        if preordenar == 'SI':
+            request.session['datos_reserva_temporal'] = {
+                'nombre': nombre,
+                'telefono': telefono,
+                'cantidad_personas': cantidad_personas,
+                'mesa':mesa,
+                'fecha':fecha,
+                'hora': hora,
+            
+            }
+            return redirect('ver_carta')
+        else:
+            nueva_reserva = Reserva(
+            nombre = nombre,
+            telefono = telefono,
+            cantidad_personas= cantidad_personas,
             mesa=mesa,
             fecha=fecha,
-            hora=hora,
-            notas=notas
-        )
+            hora= hora,
+            )
+        
+            nueva_reserva.save()
+            messages.success(request, "Tu mesa ha sido reservada con éxito.")
+            return redirect('mis_reservas') # O a la página que los mande normalmente
 
         messages.success(request, '¡Tu mesa ha sido reservada con éxito! Te esperamos.')
 

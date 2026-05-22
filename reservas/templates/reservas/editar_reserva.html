@@ -6,41 +6,47 @@
 
 <a href="{% url 'inicio' %}" class="back-button">← Volver</a>
 
-<main class="reservation-container">
+<div class="mi-formulario">
 
-    <header class="reservation-header">
-        <p>Reserva tu mesa y vive la experiencia Guadalupe</p>
-        <hr>
-    </header>
 
-    <form class="reservation-form" method="POST" action="{% url 'actualizar' datos.id %}">
+    <h2>Editar Reserva </h2>
+    <hr>
+
+    <form method="POST" action="{% url 'crear_reserva' %}">
         {% csrf_token %}
 
-        <label for="nombre">Nombre Completo</label>
-        <input value="{{datos.nombre}}" type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+        <p>Nombre:</p>
+        <input value="{{datos.nombre}}" type="text" name="nombre" placeholder="Escribe tu nombre" required>
 
-        <label for="telefono">Teléfono</label>
-        <input value ="{{datos.telefono}}" type="text" id="telefono" name="telefono" placeholder=" EJ. 3123456789" required>
+        <p>Teléfono:</p>
+        <input value="{{datos.telefono}}" type="text" name="telefono" placeholder="3177373170" required>
 
-        <label for="cantidad_personas">Cantidad de Personas</label>
-        <input value="{{datos.cantidad_personas}}" type="number" id="cantidad_personas" name="cantidad_personas" min="1" required>
+        <p>Personas:</p>
+        <input value="{{datos.cantidad_personas}}"  type="number" name="cantidad_personas" min="1" required>
 
-        <label for="mesa">Mesa</label>
-        <input value="{{datos.mesa}}" type="text" id="mesa" name="mesa" placeholder="Ej. M1, M2" required>
+        <p>Mesa:</p>
+        <input value="{{datos.mesa}}" type="text" name="mesa" placeholder="M1, M2..." required>
 
-        <label for="fecha">Fecha</label>
-        <input value="{{datos.fecha|date:'Y-m-d'}}" type="date" id="fecha" name="fecha" required>
 
-        <label for="hora">Hora</label>
-        <input value="{{datos.hora}}" type="time" id="hora" name="hora" required>
 
-        <label for="notas">Notas Adicionales</label>
-        <textarea id="notas" name="notas" rows="4"></textarea>
+        <p>Fecha:</p>
+        <input  type="date" name="fecha" required>
 
-        <button type="submit" class="submit-button">Actualizar Reserva</button>
+        <p>Hora:</p>
+        <input type="time" name="hora" required>
 
-    </form>
+       <p>Notas:</p>
+        <textarea name="notas" rows="3" placeholder="Ej: Alergias, mesa cerca a la ventana..."></textarea>
 
-</main>
+        <label for="preordenar">¿Desea preordenar sus platos de una vez?</label>
+        <select name="preordenar" id="preordenar" class="form-control">
+            <option value="NO">No, solo reservar la mesa</option>
+            <option value="SI">Sí, elegir los platos ahora</option>
+        </select>
+
+        <button type="submit">CONFIRMAR RESERVA</button>
+</div>
 
 {% endblock %}
+
+
