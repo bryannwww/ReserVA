@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ReservA{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="dark-theme">
+
+    <header class="navbar">
+        <div class="logo">
+            <h1>Reser<span>Va</span></h1>
+        </div>
+
+    <nav class="nav-menu">
+    <ul class="nav-links">
+        <li><a href="{% url 'inicio' %}">Inicio</a></li>
+        <li><a href="{% url 'ver_carta' %}">Menú</a></li>
+
+        <li><a href="{% url 'crear_reserva' %}" class="btn-reserva">Reservar</a></li>
+
+        {% if request.session.logueado %}
+            <li><a href="{% url 'mis_reservas' %}">Mis Reservas</a></li>
+            <li>
+                <span style="color: white;">{{ request.session.logueado.nombre }}</span>
+                <a href="{% url 'cerrar_sesion' %}" class="btn-registro">Logout</a>
+            </li>
+
+        {% else %}
+            <li><a href="{% url 'iniciar_sesion' %}">Entrar</a></li>
+            <li><a href="{% url 'crear_usuario' %}" class="btn-registro">Registro</a></li>
+        {% endif %}
+    </ul>
+    </nav>
+    </header>
+
+    <main class="contenedor">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="pie-pagina">
+        <p>&copy; 2026 ReservA - Medellín</p>
+    </footer>
+{% if messages %}
+        <script>
+            {% for message in messages %}
+                Swal.fire({
+                    title: "¡Excelente!",
+                    text: "{{ message }}",
+                    icon: "{{ message.tags }}", // Django mapea 'success' automáticamente con el icono verde
+                    confirmButtonColor: "#8f7325", // El color dorado de ReserVa para el botón
+                    background: "#1a1a1a", // Fondo oscuro combinando con tu app
+                    color: "#ffffff" // Texto blanco
+                });
+            {% endfor %}
+        </script>
+    {% endif %}
+</body>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</html>

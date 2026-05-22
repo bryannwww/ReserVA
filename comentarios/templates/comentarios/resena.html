@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Reservar Mesa | ReservA{% endblock %}
+
+{% block content %}<br>
+
+   <form action="{% url 'comentarios:nueva_resena' %}" method="POST">
+        {% csrf_token %}
+
+        <fieldset>
+            <legend>Nos interesa tu opinión</legend>
+            <h1>Califica tu experiencia</h1>
+
+            <div>
+                <label for="comida">¿Qué tal la comida?</label>
+                <select name="comida" id="comida">
+                    <option value="5">5 - Excelente</option>
+                    <option value="4">4 - Bien</option>
+                    <option value="3">3 - Regular</option>
+                    <option value="2">2 - Malo</option>
+                    <option value="1">1 - Pésimo</option>
+                </select>
+            </div>
+
+            <br> <div>
+                <label for="servicio">¿Cómo fue la atención?</label>
+                <select name="servicio" id="servicio">
+                    <option value="5">5 - Excelente</option>
+                    <option value="4">4 - Bien</option>
+                    <option value="3">3 - Regular</option>
+                    <option value="2">2 - Malo</option>
+                    <option value="1">1 - Pésimo</option>
+                </select>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="comentario">Cuéntanos más:</label><br>
+                <textarea name="comentario" id="comentario" cols="30" rows="5" placeholder="Escribe aquí tu opinión..."></textarea>
+            </div>
+
+            <br>
+
+            <button type="submit">Enviar Reseña</button>
+
+        </fieldset>
+    </form>
+
+{% endblock %}

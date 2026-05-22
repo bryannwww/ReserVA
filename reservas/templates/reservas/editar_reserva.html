@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Reservar Mesa | ReservA{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'inicio' %}" class="back-button">← Volver</a>
+
+<main class="reservation-container">
+
+    <header class="reservation-header">
+        <p>Reserva tu mesa y vive la experiencia Guadalupe</p>
+        <hr>
+    </header>
+
+    <form class="reservation-form" method="POST" action="{% url 'actualizar' datos.id %}">
+        {% csrf_token %}
+
+        <label for="nombre">Nombre Completo</label>
+        <input value="{{datos.nombre}}" type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+
+        <label for="telefono">Teléfono</label>
+        <input value ="{{datos.telefono}}" type="text" id="telefono" name="telefono" placeholder=" EJ. 3123456789" required>
+
+        <label for="cantidad_personas">Cantidad de Personas</label>
+        <input value="{{datos.cantidad_personas}}" type="number" id="cantidad_personas" name="cantidad_personas" min="1" required>
+
+        <label for="mesa">Mesa</label>
+        <input value="{{datos.mesa}}" type="text" id="mesa" name="mesa" placeholder="Ej. M1, M2" required>
+
+        <label for="fecha">Fecha</label>
+        <input value="{{datos.fecha|date:'Y-m-d'}}" type="date" id="fecha" name="fecha" required>
+
+        <label for="hora">Hora</label>
+        <input value="{{datos.hora}}" type="time" id="hora" name="hora" required>
+
+        <label for="notas">Notas Adicionales</label>
+        <textarea id="notas" name="notas" rows="4"></textarea>
+
+        <button type="submit" class="submit-button">Actualizar Reserva</button>
+
+    </form>
+
+</main>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Reservar Mesa | ReservA{% endblock %}
+
+{% block content %}<br>
+<tbody>
+    {% for r in reservas %}
+    <tr>
+        <td>{{ r.nombre }}</td>
+        <td>{{ r.fecha }}</td>
+        <td>{{ r.mesa }}</td>
+        <td>
+            <a href="{% url 'actualizar' r.id %}">Editar</a> |
+            <a href="{% url 'cancelar' r.id %}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+{% endblock %}

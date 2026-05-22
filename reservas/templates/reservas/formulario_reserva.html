@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Nueva Reserva | ReservA{% endblock %}
+
+{% block content %}
+<div class="mi-formulario">
+    <a href="{% url 'inicio' %}">← Volver</a>
+
+    <h2>Reservar Mesa</h2>
+    <hr>
+
+    <form method="POST" action="{% url 'crear_reserva' %}">
+        {% csrf_token %}
+
+        <p>Nombre:</p>
+        <input type="text" name="nombre" placeholder="Escribe tu nombre" required>
+
+        <p>Teléfono:</p>
+        <input type="text" name="telefono" placeholder="3177373170" required>
+
+        <p>Personas:</p>
+        <input type="number" name="cantidad_personas" min="1" required>
+
+        <p>Mesa:</p>
+        <input type="text" name="mesa" placeholder="M1, M2..." required>
+
+        <p>Fecha:</p>
+        <input type="date" name="fecha" required>
+
+        <p>Hora:</p>
+        <input type="time" name="hora" required>
+
+        <p>Notas:</p>
+        <textarea name="notas" rows="3"></textarea>
+        <button type="submit">CONFIRMAR RESERVA</button>
+    </form>
+</div>
+{% endblock %}
