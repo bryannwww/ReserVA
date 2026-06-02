@@ -16,6 +16,7 @@ def inicio_sesion(request):
             request.session["logueado"] = {
                 "id": q.id,
                 "nombre": q.nombre,
+                "rol": q.rol,
             }
 
             return redirect('inicio')
