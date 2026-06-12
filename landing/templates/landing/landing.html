@@ -11,8 +11,13 @@
             <h2>Experiencias Gastronómicas Exclusivas en Medellín</h2>
             <p>Reserva tu mesa ideal en segundos y asegura una noche inolvidable con la mejor cocina de la ciudad.</p>
             <div class="hero-buttons">
-                <a href="{% url 'crear_reserva' %}">Reservar Ahora</a>
-                <a href="{% url 'ver_carta' %}" class="btn-menu-landing">Ver el Menú</a>
+                {% if request.session.logueado.rol != 'admin' %}
+                   
+                {% endif %}
+
+                {% if request.session.logueado.rol == "admin" %}
+                 
+                {% endif %}
             </div>
         </div>
     </section>
@@ -43,13 +48,11 @@
             <h3>¿Aún no tienes una cuenta?</h3>
             <p>Regístrate hoy mismo para gestionar tus reservas, ver tu historial y recibir beneficios exclusivos.</p>
             <div class="cta-buttons">
-                <a href="{% url 'crear_usuario' %}" class="btn-registro">Crear Cuenta</a>
-                <span class="cta-or">o</span>
-                <a href="{% url 'iniciar_sesion' %}" class="nav-menu a">Inicia Sesión</a>
+            
             </div>
         </div>
     </section>
     {% endif %}
 
 </div>
-{% endblock %}
+{% endblock %}  

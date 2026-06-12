@@ -1,0 +1,84 @@
+/* ==========================================================================
+   Estilos Exclusivos para el Panel Base de Administración - ReserVa
+   ========================================================================== */
+
+/* Borde inferior morado/vinotinto para identificar la barra del jefe */
+.navbar-admin {
+    border-bottom: 2px solid #800020 !important;
+}
+
+/* El texto pequeño que dice ADMIN al lado del logo */
+.navbar-admin .logo h1 small {
+    font-size: 0.5em; 
+    color: #ffc107; 
+    vertical-align: middle;
+    margin-left: 5px;
+    font-family: monospace;
+}
+
+/* Nombre del administrador en dorado ejecutivos */
+.admin-name-tag {
+    color: #ffc107; 
+    font-weight: bold; 
+    margin-right: 15px;
+}
+
+/* Ajuste por si quieren cambiar el color del botón de salir del admin */
+.navbar-admin .btn-registro {
+    background-color: #800020 !important;
+    transition: background 0.3s ease;
+}
+
+.navbar-admin .btn-registro:hover {
+    background-color: #a00028 !important;
+}
+
+
+.admin-landing-container {
+    padding-top: 20px;
+}
+
+/* Sección Hero Operativa (Fondo oscuro degradado y borde sutil) */
+.hero-admin-panel {
+    background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%) !important;
+    border: 1px solid #222222 !important;
+}
+
+/* Separación superior para las tarjetas de control */
+.features-admin-section {
+    margin-top: 40px;
+}
+
+/* Los iconos grandes dentro de cada tarjeta */
+.admin-card-icon {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Enlaces o textos informativos abajo de las descripciones */
+.admin-card-footer {
+    margin-top: 15px;
+}
+
+/* Estilo para los botones o links deshabilitados (Próximamente) */
+.btn-disabled-admin {
+    color: #666666 !important;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9em;
+    cursor: not-allowed;
+}
+
+/* Bordes superiores de colores para diferenciar los módulos */
+.border-reservas {
+    border-top: 4px solid #800020 !important; /* Morado/Vinotinto */
+}
+
+.border-carta {
+    border-top: 4px solid #ffc107 !important;  /* Dorado */
+}
+
+.border-usuarios {
+    border-top: 4px solid #0056b3 !important;  /* Azul */
+}

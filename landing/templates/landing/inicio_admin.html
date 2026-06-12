@@ -1,0 +1,50 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block title %}Dashboard - ReserVa{% endblock %}
+
+{% block content %}
+<div class="landing-container admin-landing-container">
+
+    <section class="hero-section hero-admin-panel">
+        <div class="hero-content">
+            <h2>Consola de Administración General</h2>
+            <p>Bienvenido, {{ request.session.logueado.nombre }}. Desde este módulo tienes acceso total para modificar el estado del restaurante, controlar el aforo y actualizar la oferta gastronómica en tiempo real.</p>
+        </div>
+    </section>
+
+    <!-- Módulos de Trabajo -->
+    <section class="features-section features-admin-section">
+        
+        <div class="feature-card border-reservas">
+            <div class="admin-card-icon">📅</div>
+            <h3>Gestión de Mesas</h3>
+            <p>Revisa el consolidado de reservas del restaurante, cancela asignaciones o modifica estados de asistencia.</p>
+            <a href="{% url 'cerrar_sesion'%}">Prueba</a>
+            <div class="admin-card-footer">
+            </div>
+        </div>
+
+        <div class="feature-card border-carta">
+            <div class="admin-card-icon">🍔</div>
+            <h3>Control de la Carta</h3>
+            <p>Accede de forma directa a la carta interactiva para agregar platos premium, cambio de precios o eliminar stock.</p>
+            <a href="{% url 'ver_carta'%}">Prueba2</a>
+            <div class="admin-card-footer">
+            </div>
+        </div>
+
+        <!-- Tarjeta: Base de Usuarios -->
+        <div class="feature-card border-usuarios">
+            <div class="admin-card-icon">👥</div>
+            <h3>Base de Usuarios</h3>
+            <p>Visualiza el listado de clientes registrados en la plataforma ReserVa y audita los roles del sistema.</p>
+            <div class="admin-card-footer">
+                <a href="#" class="btn-disabled-admin">Próximamente...</a>
+            </div>
+        </div>
+        
+    </section>
+
+</div>
+{% endblock %}

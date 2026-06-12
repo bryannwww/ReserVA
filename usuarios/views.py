@@ -58,3 +58,5 @@ def crear_usuario(request):
 
     # Arreglado: Limpiamos el error de sintaxis que se mezcló aquí abajo
     return render(request, "register.html")
+
+
