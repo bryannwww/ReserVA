@@ -4,47 +4,51 @@
 {% block title %}Dashboard - ReserVa{% endblock %}
 
 {% block content %}
-<div class="landing-container admin-landing-container">
+<div class="container-fluid p-0">
 
-    <section class="hero-section hero-admin-panel">
-        <div class="hero-content">
-            <h2>Consola de Administración General</h2>
-            <p>Bienvenido, {{ request.session.logueado.nombre }}. Desde este módulo tienes acceso total para modificar el estado del restaurante, controlar el aforo y actualizar la oferta gastronómica en tiempo real.</p>
-        </div>
-    </section>
+    <div class="p-5 mb-4 text-white rounded-3 hero-admin-panel" style="background: linear-gradient(135deg, #111 0%, #1a1a1a 100%); border: 1px solid #222;">
+        <h2 class="display-6 fw-bold">Consola de Administración General</h2>
+        <p class="col-md-10 fs-6 text-white-50">Bienvenido, {{ request.session.logueado.nombre }}. Desde este módulo tienes acceso total para modificar el estado del restaurante, controlar el aforo y actualizar la oferta gastronómica en tiempo real.</p>
+    </div>
 
-    <!-- Módulos de Trabajo -->
-    <section class="features-section features-admin-section">
-        
-        <div class="feature-card border-reservas">
-            <div class="admin-card-icon">📅</div>
-            <h3>Gestión de Mesas</h3>
-            <p>Revisa el consolidado de reservas del restaurante, cancela asignaciones o modifica estados de asistencia.</p>
-            <a href="{% url 'cerrar_sesion'%}">Prueba</a>
-            <div class="admin-card-footer">
+    <div class="row g-4 features-admin-section">
+
+        <div class="col-md-4">
+            <div class="card h-100 text-center text-white border-reservas" style="background-color: #181818; padding: 20px; border-radius: 12px;">
+                <div class="card-body d-flex flex-column align-items-center gap-2">
+                    <div class="fs-1 text-warning mb-2"><i class="bi bi-calendar3"></i></div>
+                    <h5 class="card-title fw-bold text-warning">Gestión de Mesas</h5>
+                    <p class="fw-bold text-white small m-0">12 Hoy</p>
+                    <p class="card-text text-white-50 small">Revisa el consolidado de reservas del restaurante, cancela asignaciones o modifica estados de asistencia.</p>
+                    <a href="{% url 'inicio' %}" class="btn w-100 mt-auto text-white" style="background-color: #800020;">Ver Tablero</a>
+                </div>
             </div>
         </div>
 
-        <div class="feature-card border-carta">
-            <div class="admin-card-icon">🍔</div>
-            <h3>Control de la Carta</h3>
-            <p>Accede de forma directa a la carta interactiva para agregar platos premium, cambio de precios o eliminar stock.</p>
-            <a href="{% url 'ver_carta'%}">Prueba2</a>
-            <div class="admin-card-footer">
+        <div class="col-md-4">
+            <div class="card h-100 text-center text-white border-carta" style="background-color: #181818; padding: 20px; border-radius: 12px;">
+                <div class="card-body d-flex flex-column align-items-center gap-2">
+                    <div class="fs-1 text-warning mb-2"><i class="bi bi-egg-fried"></i></div>
+                    <h5 class="card-title fw-bold text-warning">Control de la Carta</h5>
+                    <p class="fw-bold text-white small m-0">Editar Menú</p>
+                    <p class="card-text text-white-50 small">Accede de forma directa a la carta interactiva para agregar platos premium, cambio de precios o eliminar stock.</p>
+                    <a href="{% url 'carta_admin' %}" class="btn w-100 mt-auto text-white" style="background-color: #800020;">Editar Menú</a>
+                </div>
             </div>
         </div>
 
-        <!-- Tarjeta: Base de Usuarios -->
-        <div class="feature-card border-usuarios">
-            <div class="admin-card-icon">👥</div>
-            <h3>Base de Usuarios</h3>
-            <p>Visualiza el listado de clientes registrados en la plataforma ReserVa y audita los roles del sistema.</p>
-            <div class="admin-card-footer">
-                <a href="#" class="btn-disabled-admin">Próximamente...</a>
+        <div class="col-md-4">
+            <div class="card h-100 text-center text-white border-usuarios" style="background-color: #181818; padding: 20px; border-radius: 12px;">
+                <div class="card-body d-flex flex-column align-items-center gap-2">
+                    <div class="fs-1 text-primary mb-2"><i class="bi bi-people-fill"></i></div>
+                    <h5 class="card-title fw-bold text-warning">Base de Usuarios</h5>
+                    <p class="fw-bold text-white small m-0">{{ total_usuarios }} Registrados</p>
+                    <p class="card-text text-white-50 small">Visualiza el listado de clientes registrados en la plataforma ReserVa y audita los roles del sistema.</p>
+                    <a href="#" class="btn btn-primary w-100 mt-auto btn-disabled-admin disabled">Próximamente...</a>
+                </div>
             </div>
         </div>
-        
-    </section>
 
+    </div>
 </div>
 {% endblock %}

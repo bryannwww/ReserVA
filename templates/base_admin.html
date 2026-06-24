@@ -6,51 +6,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Panel Control - ReservA{% endblock %}</title>
-    
-    <!-- 1. Cargamos el CSS general de la app -->
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    
-    <!-- 2. Cargamos tu nuevo CSS exclusivo del admin -->
-    <link rel="stylesheet" href="{% static 'css/base_admin.css' %}">
 
-    {% block extra_css %}
-    {% endblock %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base_admin.css' %}">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="dark-theme">
+<body class="dark-theme" style="background-color: #50060A; overflow-x: hidden;">
 
-    <header class="navbar navbar-admin">
-        <div class="logo">
-            <h1>Reser<span>Va</span> <small>ADMIN</small></h1>
-        </div>
+    <div class="d-flex" style="min-height: 100vh;">
 
-        <nav class="nav-menu">
-            <ul class="nav-links">
-                <!-- Nombre del admin con su nueva clase -->
-                <li>
-                    <span class="admin-name-tag">
-                        🔑 {{ request.session.logueado.nombre }}
-                    </span>
+        <div class="p-3 text-white" style="width: 260px; background-color: #131313; border-right: 1px solid rgba(255,255,255,0.1);">
+            <div class="mb-4">
+                <h3 class="fs-4 fw-bold m-0 text-white">Reser<span class="text-warning">Va</span> <small class="text-warning" style="font-size: 0.5em;">ADMIN</small></h3>
+            </div>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto gap-2">
+                <li class="nav-item">
+                    <a href="{% url 'inicio' %}" class="nav-link active bg-warning text-dark fw-bold">
+                        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                    </a>
                 </li>
-                
-                <!-- Corregido: Agregada la etiqueta <li> de apertura que faltaba -->
                 <li>
-                    <a href="{% url 'cerrar_sesion' %}" class="btn-registro">Cerrar Sesión</a>
+                    <a href="#" class="nav-link text-white-50">
+                        <i class="bi bi-calendar-event me-2"></i> Gestión de Mesas
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'carta_admin' %}" class="nav-link text-white-50">
+                        <i class="bi bi-egg-fried me-2"></i> Control de la Carta
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white-50">
+                        <i class="bi bi-people me-2"></i> Base de Usuarios
+                    </a>
                 </li>
             </ul>
-        </nav>
-    </header>
+        </div>
 
-    <main class="contenedor">
-        {% block content %}
-        {% endblock %}
-    </main>
+        <div class="flex-grow-1 d-flex flex-column" style="background-color: #50060A;">
 
-    <footer class="pie-pagina">
-        <p>&copy; 2026 ReservA - Panel de Administración Corporativa</p>
-    </footer>
+            <nav class="navbar navbar-dark bg-dark px-4" style="height: 70px; border-bottom: 2px solid #800020;">
+                <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
+                    <div class="text-white small">
+                        <span class="text-success me-1">●</span> Sistema: <strong>ONLINE</strong>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="text-warning fw-bold m-0">
+                            🔑 {{ request.session.logueado.nombre }}
+                        </span>
+                        <a href="{% url 'cerrar_sesion' %}" class="btn text-white fw-bold" style="background-color: #800020; border: none;">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="p-4 flex-grow-1">
+                {% block content %}
+                {% endblock %}
+            </main>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     {% if messages %}
     <script>

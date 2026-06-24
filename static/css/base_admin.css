@@ -82,3 +82,166 @@
 .border-usuarios {
     border-top: 4px solid #0056b3 !important;  /* Azul */
 }
+
+/* ==========================================================================
+   SOLUCIÓN ESTRUCTURA LATERAL COMPLETA (SIN CHOQUES DE CLASES)
+   ========================================================================== */
+
+/* Reseteamos el body del panel para que no cree barras de scroll raras */
+body.body-panel-admin {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    overflow: hidden !important;
+}
+
+/* Fuerza el alineamiento lado a lado: Menú a la izq, contenido a la der */
+.layout-principal {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: #50060A !important; /* Tu color vinotinto de fondo */
+}
+
+/* CAJA NEGRA DEL MENÚ LATERAL */
+.sidebar-lateral-nueva {
+    width: 260px !important;
+    min-width: 260px !important;
+    max-width: 260px !important;
+    background-color: #131313 !important; /* Gris oscuro/charcoal */
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 25px 15px !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-sizing: border-box !important;
+}
+
+.logo-sidebar h1 {
+    font-size: 22px !important;
+    font-weight: bold !important;
+    margin-bottom: 30px !important;
+    color: #ffffff !important;
+}
+.logo-sidebar h1 span { color: #ffc107 !important; }
+.logo-sidebar h1 small { font-size: 0.5em !important; color: #ffc107 !important; }
+
+/* LISTA DE ENLACES DEL SIDEBAR */
+.menu-sidebar-lista {
+    list-style: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.menu-sidebar-lista a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    color: #A0A0A0 !important;
+    text-decoration: none !important;
+    padding: 12px 15px !important;
+    border-radius: 8px !important;
+    font-size: 15px !important;
+    transition: all 0.3s ease !important;
+}
+
+.menu-sidebar-lista a:hover, .menu-sidebar-lista li.active a {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+}
+
+.menu-sidebar-lista li.active a {
+    border-left: 4px solid #ffc107 !important; /* El borde dorado activo */
+    background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+.emoji-icon { font-size: 1.2rem !important; }
+
+/* SECCIÓN DERECHA DE LA PÁGINA */
+.contenido-derecha-layout {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+/* NAVBAR SUPERIOR MODERNA RE-ESTILIZADA */
+.header-superior-nuevo {
+    height: 70px !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 40px !important;
+    border-bottom: 2px solid #800020 !important; /* Tu borde de jefe original */
+    box-sizing: border-box !important;
+}
+
+.estado-sistema {
+    font-size: 14px !important;
+    color: #ffffff !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    padding: 6px 14px !important;
+    border-radius: 20px !important;
+}
+
+.nav-links-nuevos {
+    list-style: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ZONA CENTRAL DE TARJETAS CON SCROLL */
+.zona-tarjetas-dinamica {
+    flex: 1 !important;
+    padding: 40px !important;
+    overflow-y: auto !important; /* Permite scroll vertical en tarjetas */
+    box-sizing: border-box !important;
+}
+
+/* NUEVA GRILLA EN 3 COLUMNAS */
+.cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 30px !important;
+    margin-top: 35px !important;
+}
+
+.card {
+    background-color: #181818 !important;
+    border-radius: 16px !important;
+    padding: 30px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 15px !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important;
+    transition: transform 0.3s ease !important;
+}
+.card:hover { transform: translateY(-5px) !important; }
+.data-highlight { font-size: 22px; font-weight: bold; color: #ffffff; }
+
+.card-btn {
+    background-color: #800020 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 10px 25px !important;
+    border-radius: 6px !important;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block !important;
+}
+.card-btn:hover { background-color: #a00028 !important; }
+.card-btn-blue { background-color: #0056b3 !important; }
+.card-btn-blue:hover { background-color: #004494 !important; }
