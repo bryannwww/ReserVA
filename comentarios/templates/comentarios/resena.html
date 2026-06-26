@@ -1,50 +1,30 @@
 {% extends 'base.html' %}
 
-{% block title %}Reservar Mesa | ReservA{% endblock %}
+{% block title %}Deja tu Reseña | ReservA{% endblock %}
 
-{% block content %}<br>
-
-   <form action="{% url 'comentarios:nueva_resena' %}" method="POST">
-        {% csrf_token %}
-
-        <fieldset>
-            <legend>Nos interesa tu opinión</legend>
-            <h1>Califica tu experiencia</h1>
-
-            <div>
-                <label for="comida">¿Qué tal la comida?</label>
-                <select name="comida" id="comida">
-                    <option value="5">5 - Excelente</option>
-                    <option value="4">4 - Bien</option>
-                    <option value="3">3 - Regular</option>
-                    <option value="2">2 - Malo</option>
-                    <option value="1">1 - Pésimo</option>
-                </select>
-            </div>
-
-            <br> <div>
-                <label for="servicio">¿Cómo fue la atención?</label>
-                <select name="servicio" id="servicio">
-                    <option value="5">5 - Excelente</option>
-                    <option value="4">4 - Bien</option>
-                    <option value="3">3 - Regular</option>
-                    <option value="2">2 - Malo</option>
-                    <option value="1">1 - Pésimo</option>
-                </select>
-            </div>
-
-            <br>
-
-            <div>
-                <label for="comentario">Cuéntanos más:</label><br>
-                <textarea name="comentario" id="comentario" cols="30" rows="5" placeholder="Escribe aquí tu opinión..."></textarea>
-            </div>
-
-            <br>
-
-            <button type="submit">Enviar Reseña</button>
-
-        </fieldset>
-    </form>
-
+{% block content %}
+<div class="contenedor">
+    <div class="mi-formulario">
+        <h2 style="color: #d4af37; margin-bottom: 20px;">Cuéntanos tu experiencia</h2>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            <p>Calificación Comida (1-5):</p>
+            <input type="number" name="comida" min="1" max="5" required placeholder="5">
+            
+            <p>Calificación Servicio (1-5):</p>
+            <input type="number" name="servicio" min="1" max="5" required placeholder="5">
+            
+            <p>Tu comentario:</p>
+            <textarea name="comentario" rows="4" required placeholder="¿Qué tal estuvo todo?"></textarea>
+            
+            <button type="submit">Enviar reseña</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="{% url 'inicio' %}" style="color: #777; text-decoration: none; font-size: 0.9rem;">Volver al inicio</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

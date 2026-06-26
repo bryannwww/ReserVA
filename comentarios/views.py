@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Resena
 from django.http import HttpResponse
+from django.contrib import messages
 from usuarios.decorador import verificar
 @verificar
 def crear_resena(request):
@@ -16,6 +17,10 @@ def crear_resena(request):
             comentario=comentario
         )
 
-        return HttpResponse("Reseña enviada con éxito")
+        # Enviamos un mensaje de éxito para que el base.html lo atrape
+        messages.success(request, "¡Tu reseña ha sido publicada con éxito!")
+        
+        # Redirigimos al inicio
+        return redirect('inicio')
 
     return render(request, "comentarios/resena.html")
