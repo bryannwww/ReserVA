@@ -245,3 +245,57 @@ body.body-panel-admin {
 .card-btn:hover { background-color: #a00028 !important; }
 .card-btn-blue { background-color: #0056b3 !important; }
 .card-btn-blue:hover { background-color: #004494 !important; }
+
+/* Estilo general de los botones del acordeón */
+.accordion-button {
+    padding: 12px 15px !important;
+    color: rgba(255,255,255,0.7) !important;
+    font-size: 0.95rem;
+    border-radius: 8px !important;
+    transition: 0.2s all ease-in-out;
+}
+
+/* Estado al pasar el mouse por encima de una opción principal */
+.accordion-button:not(.collapsed), .accordion-button:hover {
+    background-color: #800020 !important; /* El color vinotinto premium */
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* Quitar el icono de flecha azul predeterminado de Bootstrap */
+.accordion-button::after {
+    filter: invert(1) brightness(0.8); /* Vuelve la flechita blanca/grisácea */
+}
+
+/* Enlace directo a Dashboard */
+.style-link-admin {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    border-radius: 8px;
+}
+.active-dashboard {
+    background-color: #ffc107 !important; /* Amarillo/oro para destacar el inicio */
+    color: #111 !important;
+}
+.active-dashboard i {
+    color: #111 !important;
+}
+
+/* Sub-enlaces de las opciones desplegadas */
+.sublink-admin {
+    display: block;
+    padding: 8px 12px;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.sublink-admin:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffc107; /* Texto se ilumina en dorado al pasar el mouse */
+    padding-left: 18px; /* Pequeño efecto de deslizamiento */
+}

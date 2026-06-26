@@ -25,9 +25,15 @@
             <ul class="nav-links">
                 <li><a href="{% url 'inicio' %}">Inicio</a></li>
                 <li><a href="{% url 'ver_carta' %}">Menú</a></li>
-                {% if request.session.logueado.rol != "admin" %}
-
-                <li><a href="{% url 'crear_reserva' %}" class="btn-reserva" aria aria-disabled="true">Reservar</a></li>
+                {% if request.session.logueado %}
+                    <li><a href="{% url 'comentarios:crear_resena' %}" class="btn-reserva">Deja tu reseña aquí</a></li>
+                {% endif %}
+                {% if request.session.logueado %}
+                    {% if request.session.logueado.rol != "admin" %}
+                        <li><a href="{% url 'crear_reserva' %}" class="btn-reserva">Reservar</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{% url 'iniciar_sesion' %}" class="btn-reserva">Reservar</a></li>
                 {% endif %}
 
                 {% if request.session.logueado %}
@@ -65,7 +71,7 @@
     <script>
         {% for message in messages %}
         Swal.fire({
-            title: "Error!",
+            
             text: "{{ message }}",
             icon: "{{ message.tags }}",
             confirmButtonColor: "#8f7325",

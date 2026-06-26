@@ -33,6 +33,7 @@ def inicio_sesion(request):
 def logout(request):
     try:
         del request.session["logueado"]
+        messages.success(request, "¡Sesión cerrada con éxito, vuelve pronto!")
         return redirect('inicio')
     except Exception as e:
         return redirect('inicio')
@@ -58,5 +59,13 @@ def crear_usuario(request):
 
     # Arreglado: Limpiamos el error de sintaxis que se mezcló aquí abajo
     return render(request, "register.html")
+
+
+def mostrar_usuarios(request):
+    t_usuarios = Usuario.objects.all()
+    contexto = {
+        'usuarios' : t_usuarios
+    }
+    return render(request, "listado_general.html",contexto)
 
 

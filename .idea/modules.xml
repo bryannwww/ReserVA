@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/DJANGO_RESERVA.iml" filepath="$PROJECT_DIR$/.idea/DJANGO_RESERVA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ReserVA-1.iml" filepath="$PROJECT_DIR$/.idea/ReserVA-1.iml" />
     </modules>
   </component>
 </project>

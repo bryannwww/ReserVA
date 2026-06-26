@@ -1,0 +1,49 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block title %}Dashboard - ReserVa{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+
+<table id="tablaDeBryan" class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Nombre Completo</th>
+            <th>Correo Electrónico</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in usuarios  %}
+            <tr>
+                <td> {{ u.usuario }}</td>
+                <td> {{ u.nombre }}</td>
+                <td> {{ u.email }}</td>
+                <td>{{ u.rol }}</td>
+                <td>
+                    <a href="#">Eliminar</a>
+                    <a href="#">Bloquear</a>
+                </td>
+
+            </tr>
+        {% endfor %}
+    </tbody>
+    <tbody>
+        </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#tablaDeBryan').DataTable();
+    });
+</script>
+{% endblock %}

@@ -3,5 +3,5 @@ from . import views
 app_name = 'comentarios'
 
 urlpatterns = [
-    path('resenas/', views.crear_resena, name='nueva_resena'),
+    path('comentarios/', views.crear_resena, name='crear_resena'),
 ]

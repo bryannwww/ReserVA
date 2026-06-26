@@ -12,11 +12,11 @@
             <p>Reserva tu mesa ideal en segundos y asegura una noche inolvidable con la mejor cocina de la ciudad.</p>
             <div class="hero-buttons">
                 {% if request.session.logueado.rol != 'admin' %}
-                   
+
                 {% endif %}
 
                 {% if request.session.logueado.rol == "admin" %}
-                 
+
                 {% endif %}
             </div>
         </div>
@@ -48,11 +48,44 @@
             <h3>¿Aún no tienes una cuenta?</h3>
             <p>Regístrate hoy mismo para gestionar tus reservas, ver tu historial y recibir beneficios exclusivos.</p>
             <div class="cta-buttons">
-            
+
             </div>
         </div>
     </section>
     {% endif %}
 
+    <div class="landing-container">
+
+        <section class="reseñas-section" style="margin: 4rem 0;">
+    <h2 style="text-align: center; color: #fff; margin-bottom: 2rem; font-size: 2rem;">
+        Lo que dicen de <span style="color: #d4af37;">reserVa</span>
+    </h2>
+    
+    <div class="lista-reseñas" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 0 20px;">
+        {% for r in reseñas %}
+        <div class="reseña-card" style="background: #1a1a1a; border: 1px solid #333; border-radius: 16px; padding: 25px; position: relative; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+            <!-- Icono de usuario -->
+            <div style="font-size: 2rem; margin-bottom: 15px; color: #555;">👤</div>
+            
+            <!-- Estrellitas -->
+            <div style="color: #d4af37; margin-bottom: 10px; font-size: 0.9rem;">
+                ★★★★★
+            </div>
+            
+            <p style="color: #ddd; font-style: italic; line-height: 1.6; min-height: 80px;">"{{ r.comentario }}"</p>
+            
+            <div style="margin-top: 20px; border-top: 1px solid #333; padding-top: 15px;">
+                <h4 style="color: #fff; margin: 0; font-size: 1.1rem;">{{ r.usuario }}</h4>
+                <span style="color: #800020; font-size: 0.8rem; font-weight: bold;">Cliente Verificado</span>
+            </div>
+        </div>
+        {% empty %}
+        <p style="text-align: center; color: #777;">Aún no hay reseñas, ¡sé el primero!</p>
+        {% endfor %}
+    </div>
+</section>
+
+    </div>
+
 </div>
-{% endblock %}  
+{% endblock %}
